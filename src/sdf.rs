@@ -6,7 +6,7 @@ pub type Sdfr = (f32,Vector3<f32>);
 
 #[inline]
 /// convert a 2d primitive to a 3d primitve
-pub fn op_extrusion(p :&Vector3<f32>, h:f32, sdf2d:fn(&Vector2<f32>) -> Sdfr) -> Sdfr {
+pub fn op_extrude(p :&Vector3<f32>, h:f32, sdf2d:fn(&Vector2<f32>) -> Sdfr) -> Sdfr {
     let d = sdf2d(&p.xy());
     let over = p.z.abs()-(h/2.0);
     if over > 0.0 {
@@ -17,7 +17,7 @@ pub fn op_extrusion(p :&Vector3<f32>, h:f32, sdf2d:fn(&Vector2<f32>) -> Sdfr) ->
 }
 
 #[inline]
-pub fn op_rotation(p :&Vector3<f32>, r: f32, sdf2d:fn(&Vector2<f32>) -> Sdfr) -> Sdfr {
+pub fn op_revolve(p :&Vector3<f32>, r: f32, sdf2d:fn(&Vector2<f32>) -> Sdfr) -> Sdfr {
     let q = Vector2::new(p.xy().norm() - r, p.z);
     sdf2d(&q)
 }

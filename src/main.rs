@@ -34,7 +34,7 @@ fn get_dist_col(pos: &Vector3<f32>) -> (f32,Vector3<f32>) {
         |p| op_move(
             p,
             &Vector3::new(0.0,0.0,2.0),
-            |p| op_rotation(
+            |p| op_revolve(
                 p,
                 1.0,
                 |x| ((x.norm()-0.5).abs(),Vector3::new(0.0,1.0,0.0))
